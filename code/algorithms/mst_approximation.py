@@ -1,5 +1,6 @@
 # mst_approximation.py
 from scipy.sparse.csgraph import minimum_spanning_tree
+from utils import create_distance_matrix
 
 
 def mst_approximation_tsp(points):
