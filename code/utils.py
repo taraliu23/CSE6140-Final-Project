@@ -1,18 +1,17 @@
 # utils.py
 import math
-
 import os
 
 
 def read_tsp(file_path):
     """Parses a .tsp file and extracts points as a list of (id, x, y)."""
     # Ensure the file path is correct relative to this script's directory
-    # full_path = os.path.join(os.path.dirname(__file__), "..", file_path)
+    full_path = os.path.join(os.path.dirname(__file__), "..", file_path)
     points = []
 
     try:
-        # with open(full_path, 'r') as f:
-        with open(file_path, 'r') as f:
+        with open(full_path, 'r') as f:
+            # with open(file_path, 'r') as f:
             lines = f.readlines()
 
         # Debugging: Print all lines for verification
