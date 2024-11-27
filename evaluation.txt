@@ -1,0 +1,5 @@
+Team member: Tingyu Liu
+Score: 10/10
+Justification: 
+Tingyu did an excellent job completing the project independently, taking full responsibility for all code, documentation, and reporting. 
+She delivered the assignment on time with proper programming style and version control practices. All algorithms were correctly implemented and passed all tests.
