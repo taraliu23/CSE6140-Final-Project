@@ -4,9 +4,36 @@ from algorithms import brute_force, mst_approximation, simulated_annealing
 from utils import read_tsp
 import time
 import sys
+import csv
 
 
-def execute_algorithm(file_path, method, cutoff, seed=None):
+def save_results_to_csv(file_path, method, elapsed_time, cost, full_tour, rel_error):
+    """
+    Appends performance data to a CSV file.
+    """
+    output_csv = os.path.join(os.path.dirname(
+        __file__), "output", "results.csv")
+    is_new_file = not os.path.exists(output_csv)
+
+    with open(output_csv, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        # Write the header if this is a new CSV file
+        if is_new_file:
+            writer.writerow(["Dataset", "Algorithm", "Time(s)",
+                            "Solution Quality", "Full Tour", "RelError"])
+
+        writer.writerow(
+            [file_path, method, f"{elapsed_time:.2f}", f"{cost:.2f}", full_tour, f"{rel_error:.2%}"])
+
+
+def calculate_relative_error(current_cost, best_cost):
+    """
+    Calculates the relative error compared to the best-known cost.
+    """
+    return (current_cost - best_cost) / best_cost if best_cost > 0 else 0.0
+
+
+def execute_algorithm(file_path, method, cutoff, seed=None, best_cost=None):
     """Executes a specific TSP solving method."""
     points = read_tsp(file_path)
 
@@ -46,6 +73,15 @@ def execute_algorithm(file_path, method, cutoff, seed=None):
     end_time = time.time()
     elapsed_time = end_time - start_time
 
+    # Determine if a full tour was completed
+    full_tour = "Yes" if len(set(tour)) == len(points) else "No"
+
+    # Calculate relative error
+    rel_error = calculate_relative_error(cost, best_cost) if best_cost else 0.0
+
+    # Save results to CSV
+    save_results_to_csv(name, method, elapsed_time, cost, full_tour, rel_error)
+
     # Write results to the output file
     with open(output_file, 'w') as f:
         f.write(f"{cost}\n")
@@ -54,6 +90,11 @@ def execute_algorithm(file_path, method, cutoff, seed=None):
         # Log the timing results
     with open(log_file, 'a') as log:
         log.write(f"{name} - {method}: {elapsed_time:.2f} seconds\n")
+
+        # Write results to the output file
+    with open(output_file, 'w') as f:
+        f.write(f"{cost}\n")
+        f.write(",".join(map(str, [points[i][0] for i in tour])))
 
 
 def parse_args(args):
