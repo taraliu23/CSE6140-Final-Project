@@ -1,0 +1,16 @@
+,avg_time,avg_time,avg_time,avg_quality,avg_quality,avg_quality,std_quality,std_quality,std_quality,full_tour,full_tour,full_tour,avg_rel_error,avg_rel_error,avg_rel_error
+Algorithm,Approx,BF,LS,Approx,BF,LS,Approx,BF,LS,Approx,BF,LS,Approx,BF,LS
+Dataset,,,,,,,,,,,,,,,
+Atlanta,0.0,200.0,0.03,305974.47,3375249.93,2369227.38,0.0,48775.82,170037.52,False,True,True,0.0,0.0,0.0
+Berlin,0.0,200.0,0.04,412.33,19248.66,11433.69,0.0,0.0,479.73,False,True,True,0.0,0.0,0.0
+Boston,0.0,200.0,0.04,13156.06,2220895.38,1162328.23,0.0,0.0,33545.13,False,True,True,0.0,0.0,0.0
+Champaign,0.0,200.0,0.05,21160.95,209944.26,82558.91,0.0,0.0,6698.8,False,True,True,0.0,0.0,0.0
+Cincinnati,0.0,8.92,0.02,143267.02,277952.59,280632.94,0.0,0.0,3566.86,False,True,True,0.0,0.0,0.0
+Denver,0.0,200.0,0.05,8986.27,546265.49,205102.82,0.0,758.57,8341.24,False,True,True,0.0,0.0,0.0
+NYC,0.0,200.0,0.04,67375.81,7166313.08,2769304.64,0.0,0.0,154538.18,False,True,True,0.0,0.0,0.0
+Philadelphia,0.0,200.0,0.02,477466.98,3624920.35,1796664.96,0.0,0.0,152281.21,False,True,True,0.0,0.0,0.0
+Roanoke,0.03,200.0,0.11,43218.51,6784252.11,3303619.1,0.0,2851.5,114315.09,False,True,True,0.0,0.0,0.0
+SanFrancisco,0.01,200.0,0.05,10839.73,5591803.8,2130136.44,0.0,0.0,75508.4,False,True,True,0.0,0.0,0.0
+Toronto,0.01,200.0,0.06,15422.86,9116968.19,3721400.1,0.0,0.0,318525.21,False,True,True,0.0,0.0,0.0
+UKansasState,0.0,6.16,0.02,52292.14,62962.31,62962.31,0.0,0.0,0.0,False,True,True,0.0,0.0,0.0
+UMissouri,0.01,200.0,0.06,7645.63,662933.16,294287.12,0.0,0.0,12453.2,False,True,True,0.0,0.0,0.0
