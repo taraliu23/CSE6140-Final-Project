@@ -20,16 +20,16 @@ from utils import create_distance_matrix
 #      (2)                         (2)
 
 
-def mst_approximation_tsp(v):
+def mst_approximation_tsp(points):
     """Approximates TSP using a Minimum Spanning Tree."""
-    distance_matrix = create_distance_matrix(v)
+    distance_matrix = create_distance_matrix(points)
     mst = minimum_spanning_tree(distance_matrix).toarray()
     visited = set()
 
     def dfs(node, tour):
         visited.add(node)
         tour.append(node)
-        for neighbor in range(len(v)):
+        for neighbor in range(len(points)):
             if mst[node][neighbor] > 0 and neighbor not in visited:
                 dfs(neighbor, tour)
 
