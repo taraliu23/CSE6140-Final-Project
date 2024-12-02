@@ -1,3 +1,27 @@
+# simulated_annealing.py
+# Author: Tingyu 'Tara' Liu
+# Date: 2024-11-27
+
+# This is the implementation of the Simulated Annealing algorithm for the Traveling Salesman Problem (TSP).
+# The function simulated_annealing_tsp takes a list of points and a cutoff time, and returns the best tour found
+# within the time limit. The points are given as a list of (id, x, y) tuples, where id is an integer identifier
+# and x, y are the coordinates. The cutoff time is given in seconds. The function returns a tuple (cost, tour)
+# where cost is the total distance of the tour and tour is a list of indices representing the order of the cities visited.
+# The function uses a random seed for reproducibility.
+
+# The algorithm works as follows:
+# 1. Initialize with a random tour.
+# 2. Define the annealing parameters: initial temperature, cooling rate, and minimum temperature.
+# 3. Generate a neighbor by swapping two cities in the current tour.
+# 4. Accept the new tour based on the acceptance probability.
+# 5. Cool down the temperature and repeat until the minimum temperature is reached or the time limit is exceeded.
+
+# The acceptance probability is calculated as exp((current_cost - new_cost) / T), where T is the current temperature.
+
+
+# example usage:
+# cost, tour = simulated_annealing_tsp(points, cutoff=1, seed=0)
+
 
 import random
 import math
@@ -28,7 +52,6 @@ def simulated_annealing_tsp(points, cutoff, seed=None):
 
     distance_matrix = create_distance_matrix(points)
 
-    # Initial random tour
     current_tour = list(range(n))
     random.shuffle(current_tour)
     current_cost = calculate_cost(current_tour, distance_matrix)
@@ -73,7 +96,6 @@ def simulated_annealing_tsp(points, cutoff, seed=None):
 
     distance_matrix = create_distance_matrix(points)
 
-    # Step 1: Initialize with a random tour
     current_tour = list(range(n))
     random.shuffle(current_tour)
     current_cost = calculate_cost(current_tour, distance_matrix)
@@ -81,31 +103,26 @@ def simulated_annealing_tsp(points, cutoff, seed=None):
     best_tour = current_tour[:]
     best_cost = current_cost
 
-    # Step 2: Define the annealing parameters
     T = 1000  # Initial temperature
     alpha = 0.995  # Cooling rate
-    epsilon = 1e-3  # Minimum temperature
+    epsilon = 1e-3  # Min temperature
     start_time = time.time()
 
     while T > epsilon and (time.time() - start_time) < cutoff:
-        # Step 3: Generate a neighbor (swap two cities)
         i, j = random.sample(range(n), 2)
         new_tour = current_tour[:]
         new_tour[i], new_tour[j] = new_tour[j], new_tour[i]
 
         new_cost = calculate_cost(new_tour, distance_matrix)
 
-        # Step 4: Accept the new tour based on the acceptance probability
         if new_cost < current_cost or random.random() < math.exp((current_cost - new_cost) / T):
             current_tour = new_tour
             current_cost = new_cost
 
-            # Update the best solution if the new one is better
             if new_cost < best_cost:
                 best_tour = new_tour
                 best_cost = new_cost
 
-        # Step 5: Cool down the temperature
         T *= alpha
 
     return best_cost, best_tour
