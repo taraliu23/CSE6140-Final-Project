@@ -483,3 +483,5 @@ Atlanta - BF: 20.00 seconds
 Atlanta - BF: 20.00 seconds
 Atlanta - BF: 20.00 seconds
 Atlanta - LS: 0.02 seconds
+Atlanta - BF: 20.00 seconds
+Atlanta - Approx: 0.00 seconds
