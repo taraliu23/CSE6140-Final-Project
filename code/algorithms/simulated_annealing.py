@@ -1,4 +1,4 @@
-# simulated_annealing.py
+
 import random
 import math
 from utils import create_distance_matrix
@@ -18,15 +18,15 @@ def calculate_cost(tour, distance_matrix):
     return cost
 
 
-def simulated_annealing_tsp(points, cutoff, seed=None):
+def simulated_annealing_tsp(v, cutoff, seed=None):
     """Finds a near-optimal TSP tour using simulated annealing."""
     random.seed(seed)
     start_time = time.time()
-    n = len(points)
+    n = len(v)
     if n == 0:
-        raise ValueError("No points provided for TSP")
+        raise ValueError("No v provided for TSP")
 
-    distance_matrix = create_distance_matrix(points)
+    distance_matrix = create_distance_matrix(v)
 
     # Initial random tour
     current_tour = list(range(n))
@@ -58,21 +58,20 @@ def simulated_annealing_tsp(points, cutoff, seed=None):
     return best_cost, best_tour
 
 
-def simulated_annealing_tsp(points, cutoff, seed=None):
+def simulated_annealing_tsp(v, cutoff, seed=None):
     """
     Solves the TSP using Simulated Annealing.
-    :param points: List of (id, x, y) tuples.
+    :param v: List of (id, x, y) tuples.
     :param cutoff: Time limit in seconds.
     :param seed: Random seed for reproducibility.
     :return: (cost, tour) where cost is the total distance and tour is the list of indices.
     """
     random.seed(seed)
-    n = len(points)
+    n = len(v)
     if n == 0:
-        raise ValueError("No points provided for TSP")
+        raise ValueError("No v provided for TSP")
 
-    # Create the distance matrix
-    distance_matrix = create_distance_matrix(points)
+    distance_matrix = create_distance_matrix(v)
 
     # Step 1: Initialize with a random tour
     current_tour = list(range(n))

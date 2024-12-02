@@ -471,3 +471,4 @@ UMissouri - LS: 0.05 seconds
 UMissouri - LS: 0.05 seconds
 UMissouri - LS: 0.05 seconds
 UMissouri - LS: 0.05 seconds
+Atlanta - Approx: 0.00 seconds

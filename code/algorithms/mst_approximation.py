@@ -1,18 +1,35 @@
-# mst_approximation.py
+
 from scipy.sparse.csgraph import minimum_spanning_tree
 from utils import create_distance_matrix
 
+# minimum_spanning_tree(csgraph, overwrite=False)
+# Return a minimum spanning tree of an undirected graph
 
-def mst_approximation_tsp(points):
+# A minimum spanning tree is a graph consisting of the subset of edges which together connect all connected nodes, while minimizing the total sum of weights on the edges.
+# This is computed using the Kruskal algorithm.
+#  input graph             minimum spanning tree
+
+#      (0)                         (0)
+#     /   \                       /
+#    3     8                     3
+#   /       \                   /
+# (3)---5---(1)               (3)---5---(1)
+#   \       /                           /
+#    6     2                           2
+#     \   /                           /
+#      (2)                         (2)
+
+
+def mst_approximation_tsp(v):
     """Approximates TSP using a Minimum Spanning Tree."""
-    distance_matrix = create_distance_matrix(points)
+    distance_matrix = create_distance_matrix(v)
     mst = minimum_spanning_tree(distance_matrix).toarray()
     visited = set()
 
     def dfs(node, tour):
         visited.add(node)
         tour.append(node)
-        for neighbor in range(len(points)):
+        for neighbor in range(len(v)):
             if mst[node][neighbor] > 0 and neighbor not in visited:
                 dfs(neighbor, tour)
 
