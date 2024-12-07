@@ -158,6 +158,55 @@ end exec...
 
 ```
 
+## Conceptual Q&A
+
+#### Choose an approach for a NP-complete problem.
+
+- Goal: balance solution quality, computational efficiency and scalability.
+
+1. Identify the problem
+
+	- Determine which NP-complete problem to solve(eg. independent set, 3-SAT, vertex cover, 3d-matching, 3-coloring)
+
+	- Understand its structure
+
+		- graph base problem? (vertex cover, independent set)
+
+		- constraint satisfaction (eg. 3-SAT)
+
+		- matching (eg.3d-matching)
+
+2. Evaluate the constrains
+
+	- size: how large is the input? (# of Vertices, clauses, or elements)
+
+	- accuracy: exact solutions or approximation
+
+3. Choose algorithm
+
+	- exactly solve the problem: Use exact algorithms(brute force, dynamic programming, SAT solvers)
+
+		- the problem size is small enough to solve using exponential-time method
+
+		- need optimal solution
+
+	- approximation algorithms
+
+		- the problem is too large for exact methods
+		- need solution that is provably close to the optimal
+
+	- heuristics algorithms
+
+		- the problem is too large or exact of approximation algorithms
+
+		- can accept solution without performance guarantees
+
+		- eg. independent set -> greedy heuristic, 3-SAT -> greedy SAT
+
+
+
+
+
 ## Reference
 
 [1]GeeksforGeeks, “Approximate solution for Travelling Salesman Problem using MST,” GeeksforGeeks, Nov. 04, 2013. Accessed: Dec. 02, 2024. [Online]. Available: https://www.geeksforgeeks.org/approximate-solution-for-travelling-salesman-problem-using-mst/
